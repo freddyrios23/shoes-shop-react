@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Resumen del Proyecto y Guía Login/Register - Shoes Shop React</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 14mm 12mm 14mm 12mm;
+    }
+    * {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    body {
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+      color: #1e293b;
+      background: #ffffff;
+      line-height: 1.45;
+      font-size: 12.5px;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      border-bottom: 2px solid #2563eb;
+      padding-bottom: 10px;
+      margin-bottom: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .title-area h1 {
+      margin: 0;
+      font-size: 22px;
+      color: #0f172a;
+      letter-spacing: -0.5px;
+    }
+    .title-area p {
+      margin: 4px 0 0;
+      color: #64748b;
+      font-size: 12px;
+    }
+    .badge {
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 10px 12px;
+    }
+    .card h2 {
+      margin: 0 0 6px;
+      font-size: 13.5px;
+      color: #1e3a8a;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 4px;
+    }
+    .card p, .card ul {
+      margin: 0;
+      font-size: 11.5px;
+      color: #334155;
+    }
+    ul {
+      padding-left: 18px;
+    }
+    li {
+      margin-bottom: 3px;
+    }
+    .architecture-box {
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-left: 4px solid #3b82f6;
+      border-radius: 6px;
+      padding: 10px 12px;
+      margin-bottom: 12px;
+    }
+    .architecture-box h3 {
+      margin: 0 0 5px;
+      font-size: 13px;
+      color: #1e40af;
+    }
+    .atomic-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      margin-top: 6px;
+    }
+    .atomic-item {
+      background: #f1f5f9;
+      padding: 7px;
+      border-radius: 6px;
+      border: 1px solid #e2e8f0;
+      font-size: 11px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 6px;
+      font-size: 11px;
+    }
+    th, td {
+      border: 1px solid #e2e8f0;
+      padding: 5px 7px;
+      text-align: left;
+    }
+    th {
+      background: #f1f5f9;
+      color: #334155;
+      font-weight: 600;
+    }
+    code {
+      background: #e2e8f0;
+      padding: 1px 4px;
+      border-radius: 4px;
+      font-family: Consolas, monospace;
+      font-size: 10.5px;
+      color: #0f172a;
+    }
+    .code-box {
+      background: #1e293b;
+      color: #f8fafc;
+      padding: 8px 10px;
+      border-radius: 6px;
+      font-family: Consolas, monospace;
+      font-size: 10px;
+      line-height: 1.35;
+      margin: 6px 0;
+      overflow: hidden;
+    }
+    .page-break {
+      page-break-before: always;
+    }
+    footer {
+      margin-top: 14px;
+      border-top: 1px solid #e2e8f0;
+      padding-top: 6px;
+      font-size: 10px;
+      color: #94a3b8;
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PÁGINA 1: RESUMEN GENERAL -->
+  <header>
+    <div class="title-area">
+      <h1>Shoes Shop - React & Bootstrap</h1>
+      <p>Resumen técnico y guía de desarrollo para el equipo</p>
+    </div>
+    <span class="badge">Vite + React 19</span>
+  </header>
+
+  <div class="architecture-box">
+    <h3>📌 ¿De qué trata el proyecto?</h3>
+    <p style="margin: 0; font-size: 11.5px; color: #334155;">
+      Es una tienda web de calzado (E-commerce) con catálogo, carrito de compras y autenticación (Login/Registro). Está construida con <strong>React 19</strong>, modularizada con <strong>Atomic Design</strong> y estilizada con Bootstrap y CSS moderno.
+    </p>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h2>🛠️ Stack Tecnológico</h2>
+      <ul>
+        <li><strong>React 19 + Vite:</strong> Rendimiento y renderizado por componentes.</li>
+        <li><strong>React Router DOM 7:</strong> Navegación entre vistas sin recarga.</li>
+        <li><strong>React-Bootstrap:</strong> Componentes de UI listos y responsivos.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>🚀 Comandos Básicos</h2>
+      <ul>
+        <li><code>npm install</code> : Instala paquetes del proyecto.</li>
+        <li><code>npm run dev</code> : Inicia el servidor de desarrollo local.</li>
+        <li><code>npm run build</code> : Compila para producción.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="architecture-box">
+    <h3>🧬 Atomic Design (Estructura de Componentes)</h3>
+    <div class="atomic-steps">
+      <div class="atomic-item">
+        <strong>1. Átomos (<code>/atoms</code>)</strong>
+        • <code>Button.jsx</code><br>
+        • <code>Text.jsx</code><br>
+        • <code>Input.jsx</code><br>
+        • <code>Image.jsx</code>
+      </div>
+      <div class="atomic-item">
+        <strong>2. Moléculas (<code>/molecules</code>)</strong>
+        • <code>ProductCard.jsx</code><br>
+        • <code>SearchBar.jsx</code><br>
+        • <code>ProductForm.jsx</code>
+      </div>
+      <div class="atomic-item">
+        <strong>3. Organismos (<code>/organims</code>)</strong>
+        • <code>Navbar.jsx</code><br>
+        • <code>Footer.jsx</code><br>
+        • <code>ProductList.jsx</code>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom: 12px;">
+    <h2>📄 Vistas Principales (<code>/src/pages</code>)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Página</th>
+          <th>Ruta</th>
+          <th>Propósito</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>Home.jsx</strong></td><td><code>/</code></td><td>Página principal y destacados.</td></tr>
+        <tr><td><strong>Products.jsx</strong></td><td><code>/products</code></td><td>Catálogo de zapatos con filtros.</td></tr>
+        <tr><td><strong>Cart.jsx</strong></td><td><code>/cart</code></td><td>Carrito de compras y totales.</td></tr>
+        <tr><td><strong>Login.jsx</strong></td><td><code>/login</code></td><td>Inicio de sesión con correo y contraseña.</td></tr>
+        <tr><td><strong>Register.jsx</strong></td><td><code>/register</code></td><td>Registro de nuevos usuarios.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SALTO DE PÁGINA PARA LA SECCIÓN DE LOGIN Y REGISTER -->
+  <div class="page-break"></div>
+
+  <header>
+    <div class="title-area">
+      <h1>Guía Paso a Paso: Login y Register en JSX Vainilla</h1>
+      <p>Aprende cómo funciona el formulario con React estándar y Hooks</p>
+    </div>
+    <span class="badge">Autenticación</span>
+  </header>
+
+  <div class="architecture-box">
+    <h3>🎯 Conceptos Clave para Aprender</h3>
+    <p style="font-size: 11.5px; margin: 0;">
+      Para crear un formulario en React ("JSX vainilla"), solo necesitas 3 cosas fundamentales:
+      <br>
+      <strong>1. Estados (<code>useState</code>):</strong> Para guardar en memoria lo que el usuario tipea en tiempo real.<br>
+      <strong>2. Manejador de Envíos (<code>onSubmit</code>):</strong> Función que detiene la recarga de página (<code>e.preventDefault()</code>) y valida datos.<br>
+      <strong>3. Enrutamiento (<code>Link</code> y <code>useNavigate</code>):</strong> Para saltar entre Login y Register o ir a Home.
+    </p>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <h2>🔐 Estructura del Login (<code>Login.jsx</code>)</h2>
+      <p><strong>Campos requeridos:</strong></p>
+      <ul>
+        <li><code>CORREO ELECTRÓNICO</code> (input con placeholder <em>ejemplo@duoc.cl</em>)</li>
+        <li><code>CONTRASEÑA</code> (input type password con placeholder <em>••••••••</em>)</li>
+        <li>Botón: <code>INICIAR SESIÓN</code> (negro, mayúsculas)</li>
+        <li>Enlace: <em>¿No tienes cuenta? Regístrate aquí</em></li>
+      </ul>
+      <div class="code-box">
+const [email, setEmail] = useState('');
+const [password, setPassword] = useState('');
+
+&lt;input 
+  type="email" 
+  value={email} 
+  onChange={(e) => setEmail(e.target.value)} 
+/&gt;
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>📝 Estructura del Registro (<code>Register.jsx</code>)</h2>
+      <p><strong>Campos requeridos:</strong></p>
+      <ul>
+        <li><code>NOMBRE COMPLETO</code></li>
+        <li><code>CORREO ELECTRÓNICO</code></li>
+        <li><code>CONTRASEÑA</code></li>
+        <li><code>CONFIRMAR CONTRASEÑA</code> (valida igualdad)</li>
+        <li>Botón: <code>REGISTRARSE</code></li>
+        <li>Enlace: <em>¿Ya tienes cuenta? Inicia sesión aquí</em></li>
+      </ul>
+      <div class="code-box">
+if (password !== confirmPassword) {
+  setError('Las contraseñas no coinciden.');
+  return;
+}
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🎨 Estilos del Formulario (Tarjeta exacta según la imagen)</h2>
+    <p style="font-size: 11px; color: #475569; margin-bottom: 6px;">
+      Los estilos se encuentran centralizados en <code>src/styles/global.css</code>:
+    </p>
+    <ul>
+      <li><code>.auth-container</code>: Centra la tarjeta horizontal y verticalmente en la pantalla.</li>
+      <li><code>.auth-card</code>: Tarjeta blanca limpia con borde sutil (<code>#e5e7eb</code>) y sombra suave.</li>
+      <li><code>.auth-label</code>: Letras en negrita (<code>font-weight: 800</code>), tamaño 12px y mayúsculas.</li>
+      <li><code>.auth-input</code>: Bordes redondeados de 6px y resalta el foco en negro al hacer clic.</li>
+      <li><code>.auth-btn</code>: Botón negro (<code>#111111</code>) de ancho completo con texto blanco en mayúsculas.</li>
+    </ul>
+  </div>
+
+  <footer>
+    <span>Shoes Shop React • Guía de Aprendizaje</span>
+    <span>Página 2 • Login y Register</span>
+  </footer>
+
+</body>
+</html>
