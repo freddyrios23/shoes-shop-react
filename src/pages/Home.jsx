@@ -1,12 +1,7 @@
-import Button from "../components/atoms/Button";
-
 function Home() {
-  return (
-    <>
-        <h1>SHOES SHOP</h1>
-        <Button onClick={() => alert("probando btooon")}> Comprar </Button>
-    </>
-    
-  );
+    return (
+        <h1>Bienvenido a Shoes Shop</h1>
+    );
 }
+
 export default Home;
