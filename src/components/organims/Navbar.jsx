@@ -13,6 +13,7 @@ function NavBar() {
                         <Nav.Link href="/products">Productos</Nav.Link>
                         <Nav.Link href="/cart">Carrito</Nav.Link>
                         <Nav.Link href="/login">Iniciar sesión</Nav.Link>
+                        <Nav.Link href="/AdminMode">Modo Admin</Nav.Link>
                     <Nav.Link href="/register">Registrarse</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
