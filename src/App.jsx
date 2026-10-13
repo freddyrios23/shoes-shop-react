@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import NavBar from "./components/organims/Navbar";
 import Footer from "./components/organims/Footer";
 import SearchBar from "./components/molecules/SearchBar";
+import Adminmode from "./pages/AdminMode";
 
 import Home from "./pages/Home";
 import Products from "./pages/Products";
@@ -20,6 +21,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/Adminmode" element={<Adminmode />} />
       </Routes>
       <Footer />
     </>
