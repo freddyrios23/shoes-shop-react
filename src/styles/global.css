@@ -110,3 +110,39 @@ body {
 .auth-link-text a:hover {
   text-decoration: underline;
 }
+
+
+/* Configuración general de la página */
+html,
+body {
+    margin: 0;
+    min-height: 100%;
+    width: 100%;
+}
+
+/* El contenido ocupa toda la altura disponible */
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* El footer queda abajo y su contenido centrado */
+footer {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: auto;
+    padding: 20px;
+    text-align: center;
+    background-color: #212529;
+    color: white;
+}
+
+/* Evitamos que el contenido del footer quede pegado a los bordes */
+footer h1,
+footer h2,
+footer p {
+    text-align: center;
+    margin-left: 0;
+    margin-right: 0;
+}
