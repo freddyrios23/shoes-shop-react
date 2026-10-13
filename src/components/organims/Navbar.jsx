@@ -5,7 +5,7 @@ function NavBar() {
     return (
         <Navbar bg="dark" variant="dark" expand="lg">
             <Container>
-                <Navbar.Brand href="/">SHOES SHOP</Navbar.Brand>
+                <Navbar.Brand href={window.location.pathname === "/" ? "/Adminmode" : "/"}>SHOES SHOP</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
@@ -13,7 +13,6 @@ function NavBar() {
                         <Nav.Link href="/products">Productos</Nav.Link>
                         <Nav.Link href="/cart">Carrito</Nav.Link>
                         <Nav.Link href="/login">Iniciar sesión</Nav.Link>
-                        <Nav.Link href="/AdminMode">Modo Admin</Nav.Link>
                     <Nav.Link href="/register">Registrarse</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>

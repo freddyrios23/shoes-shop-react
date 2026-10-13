@@ -2,6 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import NavBar from "./components/organims/Navbar";
 import Footer from "./components/organims/Footer";
+import SearchBar from "./components/molecules/SearchBar";
 
 import Home from "./pages/Home";
 import Products from "./pages/Products";
