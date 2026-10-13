@@ -1,30 +1,29 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import Button from '../components/atoms/Button';
+
+import Text from "../components/atoms/Text";
+import ProductList from "../components/organims/ProductList";
 
 function Home() {
-  return (
-    <div style={{ textAlign: 'center', padding: '40px 20px' }}>
-      <h1>SHOES SHOP</h1>
-      <p style={{ color: '#64748b', marginBottom: '24px' }}>
-        Tienda de Calzado Online
-      </p>
+    return (
+        <>
+            {/* Título principal de la página de inicio */}
+            <Text variant="h1" className="text-center mt-4">
+                Bienvenidos a Shoes Shop
+            </Text>
 
-      <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', marginBottom: '30px' }}>
-        <Button onClick={() => alert("probando botón")}>Comprar</Button>
-        <Link to="/login" style={{ textDecoration: 'none' }}>
-          <button className="auth-btn" style={{ width: 'auto', padding: '8px 20px', marginTop: 0 }}>
-            Iniciar Sesión
-          </button>
-        </Link>
-        <Link to="/register" style={{ textDecoration: 'none' }}>
-          <button className="auth-btn" style={{ width: 'auto', padding: '8px 20px', marginTop: 0, backgroundColor: '#334155' }}>
-            Registrarse
-          </button>
-        </Link>
-      </div>
-    </div>
-  );
+            {/* Descripción de nuestra tienda */}
+            <Text variant="p" className="text-center">
+                Tu estilo, tus zapatillas. Encuentra el par perfecto para cada ocasión.
+            </Text>
+
+            {/* Título de los productos destacados */}
+            <Text variant="h2" className="text-center mt-5">
+                Productos destacados
+            </Text>
+
+            {/* Mostramos solamente los primeros 3 productos */}
+            <ProductList limite={3} />
+        </>
+    );
 }
 
 export default Home;
