@@ -1,14 +1,21 @@
 
-// Importamos la lista de productos
+import React, { useState } from "react";
+import SearchBar from "../components/molecules/SearchBar";
 import ProductList from "../components/organims/ProductList";
 
 function Products() {
+    // Guardamos el texto que se enviará al listado de productos
+    const [busqueda, setBusqueda] = useState("");
+
     return (
         <div className="container mt-4">
-            <h1>Productos</h1>
+            <h1 className="text-center">Productos</h1>
 
-            {/* Mostramos la lista de productos */}
-            <ProductList />
+            {/* Mostramos la barra de búsqueda */}
+            <SearchBar onSearch={setBusqueda} />
+
+            {/* Filtramos los productos según la búsqueda */}
+            <ProductList busqueda={busqueda} />
         </div>
     );
 }
