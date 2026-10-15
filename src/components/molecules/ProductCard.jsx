@@ -64,7 +64,7 @@ function ProductCard({ product }) {
                     price={product.price}
                 />
 
-                <div className="d-flex gap-2 mt-3">
+                <div className="d-flex gap-2 mt-auto" >
                     {/* Botón para ver los detalles */}
                     <Button
                         variant="primary"
