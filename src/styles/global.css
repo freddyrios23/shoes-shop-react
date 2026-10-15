@@ -4,10 +4,22 @@
   padding: 0;
 }
 
+/* Variables de color de la tienda (mismo tono del Navbar y Footer #212529) */
+:root {
+  --brand-dark: #212529;
+  --brand-dark-hover: #000000;
+  --card-border: #e2e8f0;
+  --input-border: #cbd5e1;
+  --input-border-hover: #94a3b8;
+  --input-bg: #f8fafc;
+  --input-text: #1e293b;
+  --text-muted: #64748b;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background-color: #f1f5f9;
-  color: #333333;
+  background-color: #f8fafc;
+  color: #212529;
   min-height: 100vh;
 }
 
@@ -17,98 +29,232 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 90vh;
-  padding: 20px;
+  min-height: 80vh;
+  padding: 40px 20px;
 }
 
-/* Título superior grande */
+/* Título superior grande con el color principal de la marca */
 .auth-title {
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 700;
-  color: #000000;
-  margin-bottom: 16px;
+  color: var(--brand-dark);
+  margin-bottom: 22px;
   text-align: center;
+  letter-spacing: -0.5px;
 }
 
-/* Tarjeta blanca con bordes redondeados */
+/* Tarjeta con bordes modernos y sombra suave y elegante */
 .auth-box {
   background-color: #ffffff;
-  border: 1px solid #dbeafe;
-  border-radius: 20px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.07), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
   width: 100%;
-  max-width: 320px;
-  padding: 32px 24px;
+  max-width: 380px;
+  padding: 32px 28px;
 }
 
 /* Grupo de cada campo */
 .form-group {
-  margin-bottom: 22px;
+  margin-bottom: 20px;
   text-align: left;
 }
 
-/* Etiqueta azul del input */
-.form-label {
-  display: block;
-  font-size: 11px;
+/* Mensaje de error (ej. Usuario no encontrado) */
+.auth-error-msg {
+  background-color: #fef2f2;
+  color: #dc2626;
+  border: 1.5px solid #fecaca;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 13px;
   font-weight: 600;
-  color: #1e40af;
-  margin-bottom: 6px;
+  margin-bottom: 20px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  animation: navDropdownFade 0.2s ease-out;
 }
 
-/* Input con borde azul redondeado */
+/* Etiqueta con el color principal de la página */
+.form-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--brand-dark);
+  margin-bottom: 7px;
+  letter-spacing: 0.2px;
+}
+
+/* Input con borde suave, esquinas redondeadas y efecto focus premium */
 .form-input {
   width: 100%;
-  padding: 9px 12px;
-  font-size: 13px;
-  border: 1.5px solid #93c5fd;
-  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 14px;
+  border: 1.5px solid var(--input-border);
+  border-radius: 10px;
   outline: none;
+  background-color: var(--input-bg);
+  color: var(--input-text);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.form-input::placeholder {
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+.form-input:hover {
+  border-color: var(--input-border-hover);
   background-color: #ffffff;
-  color: #1e293b;
-  transition: border-color 0.2s;
 }
 
 .form-input:focus {
-  border-color: #2563eb;
+  border-color: var(--brand-dark);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3.5px rgba(33, 37, 41, 0.12);
 }
 
-/* Botón estilo píldora azul centrado */
+/* Botón estilo píldora con el color del Navbar y Footer (#212529) */
 .btn-pill {
-  background-color: #3b6998;
+  background-color: var(--brand-dark);
   color: #ffffff;
-  border: none;
+  border: 1.5px solid var(--brand-dark);
   border-radius: 50px;
-  padding: 9px 28px;
-  font-size: 13px;
+  padding: 11px 28px;
+  font-size: 14px;
   font-weight: 600;
   cursor: pointer;
   display: block;
-  margin: 20px auto 0 auto;
-  transition: background-color 0.2s;
+  width: 100%;
+  margin: 24px auto 0 auto;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 12px rgba(33, 37, 41, 0.18);
+  letter-spacing: 0.3px;
 }
 
 .btn-pill:hover {
-  background-color: #2d5580;
+  background-color: var(--brand-dark-hover);
+  border-color: var(--brand-dark-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(33, 37, 41, 0.28);
+}
+
+.btn-pill:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(33, 37, 41, 0.18);
 }
 
 /* Enlace inferior */
 .auth-link-text {
-  margin-top: 20px;
+  margin-top: 22px;
   text-align: center;
-  font-size: 12px;
-  color: #64748b;
+  font-size: 13px;
+  color: var(--text-muted);
 }
 
 .auth-link-text a {
-  color: #2563eb;
+  color: var(--brand-dark);
   text-decoration: none;
-  font-weight: 600;
-  margin-left: 4px;
+  font-weight: 700;
+  margin-left: 5px;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
 }
 
 .auth-link-text a:hover {
+  color: var(--brand-dark-hover);
   text-decoration: underline;
+}
+
+/* ===================================================
+   ÍCONOS DEL NAVBAR (Monito y Carrito a la derecha)
+   =================================================== */
+
+/* Botón/Enlace para los íconos del navbar */
+.nav-icon-btn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  padding: 8px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s ease, transform 0.15s ease, color 0.2s ease;
+  line-height: 1;
+}
+
+.nav-icon-btn:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  transform: scale(1.08);
+}
+
+.nav-icon-btn:active {
+  transform: scale(0.95);
+}
+
+/* Contenedor relativo para posicionar el dropdown del monito */
+.nav-user-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* Menú desplegable del monito */
+.nav-user-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background-color: #ffffff;
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.06);
+  min-width: 190px;
+  padding: 8px 0;
+  z-index: 1050;
+  animation: navDropdownFade 0.18s ease-out;
+}
+
+@keyframes navDropdownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enlaces dentro del menú del monito */
+.nav-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--brand-dark);
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.nav-dropdown-item:hover {
+  background-color: #f1f5f9;
+  color: #000000;
+}
+
+.nav-dropdown-item svg {
+  color: var(--text-muted);
+  transition: color 0.15s ease;
+}
+
+.nav-dropdown-item:hover svg {
+  color: var(--brand-dark);
 }
 
 
