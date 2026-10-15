@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import { Container, Table, Alert } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import Button from '../components/atoms/Button';
 import Image from '../components/atoms/Image';
 
 function Cart() {
+  const navigate = useNavigate();
+
   // se lee lo que esta guardado en el navegador
   const datosGuardados = localStorage.getItem('carrito');
 
@@ -64,6 +67,11 @@ function Cart() {
     }
     total = total + (cartItems[i].precio * cant);
   }
+
+  // función para ir a la vista de pagar (checkout)
+  const irAPagar = () => {
+    navigate('/checkout');
+  };
 
   // si el carrito esta vacío
   if (cartItems.length === 0) {
@@ -142,7 +150,8 @@ function Cart() {
           <Button variant="secondary" onClick={vaciarCarrito}>
             Vaciar
           </Button>
-          <Button variant="success" onClick={() => alert('Pasando a la pantalla de pago...')}>
+          {/* Botón de Comprar ahora que redirige a /checkout */}
+          <Button variant="success" onClick={irAPagar}>
             Comprar ahora
           </Button>
         </div>
