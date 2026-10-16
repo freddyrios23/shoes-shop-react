@@ -1,21 +1,17 @@
-import { Container, Card } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import Button from '../components/atoms/Button';
+import SuccessPayContent from '../components/organims/SuccessPayContent';
 
 function SuccessPay() {
   const navigate = useNavigate();
 
+  const volverATienda = () => {
+    navigate('/products');
+  };
+
   return (
     <Container className="my-5 text-center">
-      <Card className="p-5 shadow-sm border-success">
-        <h1 className="text-success mb-3">¡Se ha realizado la compra con éxito!</h1>
-        <p className="lead">Gracias por comprar en Shoes Shop. Tu pedido ya está siendo procesado.</p>
-        <div className="mt-4">
-          <Button variant="primary" onClick={() => navigate('/products')}>
-            Volver a la tienda
-          </Button>
-        </div>
-      </Card>
+      <SuccessPayContent volverATienda={volverATienda} />
     </Container>
   );
 }
