@@ -1,10 +1,14 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Button from '../components/atoms/Button';
 
 function Login() {
   const [usuario, setUsuario] = useState('');
   const [clave, setClave] = useState('');
   const [error, setError] = useState('');
+
+  //modo admin
+  const [mostrarAdmin, setMostrarAdmin] = useState(false);
 
   const navigate = useNavigate();
 
@@ -60,7 +64,7 @@ function Login() {
 
       <div className="auth-box">
         <form onSubmit={iniciarSesion}>
-          
+
           {/* Mensaje de error visual si el usuario no está registrado */}
           {error && (
             <div className="auth-error-msg">
@@ -123,6 +127,20 @@ function Login() {
         <div className="auth-link-text">
           <span>¿No tienes cuenta?</span>
           <Link to="/register">Regístrate</Link>
+        </div>
+        <div className="text-center mt-3">
+          <span
+            onClick={() => setMostrarAdmin(!mostrarAdmin)}
+            style={{ cursor: 'pointer' }}
+          >
+            ⚙️
+          </span>
+
+          {mostrarAdmin && (
+            <Button onClick={() => navigate('/admin-login')}>
+              Modo administrador
+            </Button>
+          )}
         </div>
       </div>
     </div>

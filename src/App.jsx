@@ -15,6 +15,7 @@ import SuccessPay from "./pages/SuccessPay";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Adminmode from "./pages/AdminMode";
+import AdminLogin from "./pages/AdminLogin";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/Adminmode" element={<Adminmode />} />
+        <Route path="/admin-login" element={<AdminLogin />} />
       </Routes>
       <Footer />
     </>
