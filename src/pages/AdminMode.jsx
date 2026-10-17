@@ -17,10 +17,6 @@ function AdminMode() {
     const [nombreEditar, setNombreEditar] = useState('');
     const [precioEditar, setPrecioEditar] = useState('');
 
-
-
-
-
     function agregarProducto() {
         if (nombre === '' || precio === '') {
             alert('Debe completar el nombre y el precio');
