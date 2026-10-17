@@ -23,7 +23,7 @@ function AdminLogin() {
             border: '1px solid black',
             padding: '20px',
             width: '300px',
-            margin: '150px auto'
+            margin: '170px auto'
         }}>
             <h2>Modo administrador</h2>
 
