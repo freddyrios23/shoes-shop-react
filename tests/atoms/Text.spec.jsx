@@ -2,7 +2,7 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { act } from 'react';
-import Text from '../src/components/atoms/Text.jsx';
+import Text from '../../src/components/atoms/Text.jsx';
 
 // Configuramos el entorno de pruebas de React.
 globalThis.IS_REACT_ACT_ENVIRONMENT = true;
