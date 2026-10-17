@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Container, Card, Row, Col } from 'react-bootstrap';
-import productosIniciales from '../data/products';
 import Button from '../components/atoms/Button';
 import Text from '../components/atoms/Text';
 

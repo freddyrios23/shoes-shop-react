@@ -1,19 +1,21 @@
-// Importamos la tarjeta que muestra la información de cada zapatilla
+// Importamos el arreglo que contiene los productos originales de la tienda
+import productosOriginales from "../../data/products";
+
+ // Importamos la tarjeta que muestra la información de cada zapatilla
 import ProductCard from "../molecules/ProductCard";
 
-// El componente recibe dos propiedades:
-// busqueda: texto que queremos buscar (por defecto está vacío)
-// limite: cantidad máxima de productos que queremos mostrar (por defecto 8)
-function ProductList({ productos = [], busqueda = "", limite = 8 }) {
+// Recibimos los productos, el texto de búsqueda y el límite
+function ProductList({ productos = productosOriginales, busqueda = "", limite }) {
 
-    // Filtramos los productos según su nombre y Convertimos a minúsculas para que la búsqueda no dependa de mayúsculas
+    // Filtramos los productos según su nombre
     const productosFiltrados = productos.filter((producto) =>
         producto.nombre.toLowerCase().includes(busqueda.toLowerCase())
     );
 
-    // Tomamos solamente la cantidad de productos indicada por limite
-    // Primero filtramos y después aplicamos el límite
-    const productosMostrados = productosFiltrados.slice(0, limite);
+    // Si se indica un límite, lo aplicamos; si no, mostramos todos
+    const productosMostrados = limite
+        ? productosFiltrados.slice(0, limite)
+        : productosFiltrados;
 
     return (
         <div className="container my-4">
@@ -25,8 +27,6 @@ function ProductList({ productos = [], busqueda = "", limite = 8 }) {
                         className="col-12 col-sm-6 col-lg-4"
                         key={producto.id}
                     >
-                        {/* Reutilizamos ProductCard para mostrar cada zapatilla */}
-                        {/* Adaptamos los nombres de los campos a los que espera ProductCard */}
                         <ProductCard
                             product={{
                                 id: producto.id,
@@ -51,5 +51,4 @@ function ProductList({ productos = [], busqueda = "", limite = 8 }) {
     );
 }
 
-// Exportamos el componente para poder reutilizarlo en otras páginas
 export default ProductList;
