@@ -1,13 +1,10 @@
-// Importamos el arreglo que contiene los productos de la tienda
-import productos from "../../data/products";
-
 // Importamos la tarjeta que muestra la información de cada zapatilla
 import ProductCard from "../molecules/ProductCard";
 
 // El componente recibe dos propiedades:
 // busqueda: texto que queremos buscar (por defecto está vacío)
 // limite: cantidad máxima de productos que queremos mostrar (por defecto 8)
-function ProductList({ busqueda = "", limite = 8 }) {
+function ProductList({ productos = [], busqueda = "", limite = 8 }) {
 
     // Filtramos los productos según su nombre y Convertimos a minúsculas para que la búsqueda no dependa de mayúsculas
     const productosFiltrados = productos.filter((producto) =>

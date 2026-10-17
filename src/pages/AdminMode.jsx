@@ -2,10 +2,11 @@ import { useState } from 'react';
 import { Container, Card, Row, Col } from 'react-bootstrap';
 import productosIniciales from '../data/products';
 import Button from '../components/atoms/Button';
+import Text from '../components/atoms/Text';
 
-function AdminMode() {
+function AdminMode({ productos, setProductos }) {
 
-    const [productos, setProductos] = useState(productosIniciales);
+    
 
     //agregar
     const [nombre, setNombre] = useState('');
@@ -64,7 +65,7 @@ function AdminMode() {
 
     return (
         <Container className="my-5">
-            <h1>Modo admin Supremo</h1>
+            <Text variant="h1">Modo administrador</Text>
 
             <input
                 className="form-control mb-2"
@@ -110,8 +111,8 @@ function AdminMode() {
                             />
 
                             <Card.Body>
-                                <Card.Title>{producto.nombre}</Card.Title>
-                                <Card.Text>Precio: ${producto.precio}</Card.Text>
+                                <Text variant="h5">{producto.nombre}</Text>
+                                <Text variant="p">Precio: ${producto.precio}</Text>
 
                                 {idEditar === producto.id && (
                                     <div>
@@ -131,17 +132,22 @@ function AdminMode() {
                                             placeholder="Nuevo precio"
                                         />
 
-                                        <Button variant="success" onClick={guardarEdicion}>
+                                        <Button
+                                            variant="success"
+                                            style={{ marginTop: '-5px', marginLeft: '23px' }}
+                                            onClick={guardarEdicion}
+                                        >
                                             Guardar
                                         </Button>
+
                                     </div>
                                 )}
 
-                                <div style={{ marginTop: 'auto', display: 'flex', gap: '10px' }}>
+                                <div className="botones-admin" style={{ display: 'flex', gap: '20px' }}>
                                     <Button
                                         variant="warning"
                                         size="md"
-                                        style={{ width: '160px' }}
+                                        style={{ width: '80px' }}
                                         onClick={() => editarProducto(producto)}
                                     >
                                         Editar
@@ -150,7 +156,7 @@ function AdminMode() {
                                     <Button
                                         variant="danger"
                                         size="md"
-                                        style={{ width: '170px' }}
+                                        style={{ width: '90px' }}
                                         onClick={() => eliminarProducto(producto.id)}
                                     >
                                         Eliminar
