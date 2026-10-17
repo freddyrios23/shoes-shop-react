@@ -1,22 +1,24 @@
-// Importamos el arreglo que contiene los productos de la tienda
+
+ // Importamos el arreglo que contiene los productos de la tienda
 import productos from "../../data/products";
 
 // Importamos la tarjeta que muestra la información de cada zapatilla
 import ProductCard from "../molecules/ProductCard";
 
 // El componente recibe dos propiedades:
-// busqueda: texto que queremos buscar (por defecto está vacío)
-// limite: cantidad máxima de productos que queremos mostrar (por defecto 8)
-function ProductList({ busqueda = "", limite = 8 }) {
+// busqueda: texto que queremos buscar 
+// limite: cantidad máxima de productos que queremos mostrar 
+function ProductList({ busqueda = "", limite }) {
 
-    // Filtramos los productos según su nombre y Convertimos a minúsculas para que la búsqueda no dependa de mayúsculas
+    // Filtramos los productos según su nombre
     const productosFiltrados = productos.filter((producto) =>
         producto.nombre.toLowerCase().includes(busqueda.toLowerCase())
     );
 
-    // Tomamos solamente la cantidad de productos indicada por limite
-    // Primero filtramos y después aplicamos el límite
-    const productosMostrados = productosFiltrados.slice(0, limite);
+    // Si se indica un límite, lo aplicamos; si no, mostramos todos
+    const productosMostrados = limite
+        ? productosFiltrados.slice(0, limite)
+        : productosFiltrados;
 
     return (
         <div className="container my-4">
