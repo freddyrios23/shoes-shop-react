@@ -440,3 +440,106 @@ footer p {
     line-height: 1.6;
 }
 
+/* Ajustes para celulares */
+@media (max-width: 600px) {
+
+    /* Reducimos el tamaño del título del inicio */
+    .home-title {
+        font-size: 30px;
+    }
+
+    /* Ajustamos el título de productos destacados */
+    .featured-title {
+        font-size: 24px;
+    }
+
+    /* Reducimos la altura de las imágenes de productos */
+    .product-image,
+    .card-img-top {
+        height: 180px;
+    }
+
+    /* Ajustamos los espacios de la página de contacto */
+    .contact-container {
+        width: 95%;
+        margin: 20px auto;
+        padding: 18px;
+    }
+
+    /* Ajustamos la página Sobre Nosotros */
+    .about-container {
+        width: 95%;
+        margin: 20px auto;
+        padding: 18px;
+    }
+
+    /* Reducimos el espacio de los formularios */
+    .auth-wrapper {
+        padding: 25px 15px;
+    }
+
+    .auth-box {
+        padding: 24px 18px;
+    }
+
+    /* Ajustamos el tamaño de los títulos de las páginas */
+    .about-container h1,
+    .auth-title {
+        font-size: 26px;
+    }
+
+    /* Evitamos que el footer tenga demasiado espacio */
+    .footer {
+        padding: 15px 10px;
+    }
+}
+
+
+/* Tamaño de las imágenes del carrito */
+.cart-image-cell {
+    width: 70px;
+}
+
+.cart-product-image {
+    display: block;
+    width: 50px !important;
+    height: 50px !important;
+    object-fit: contain;
+}
+
+/* Ajustes del carrito en celulares */
+@media (max-width: 600px) {
+
+    /* Ajustamos el espacio de la página */
+    .cart-container {
+        width: 100%;
+        max-width: 100%;
+        padding: 12px;
+        margin: 0 auto;
+    }
+
+    /* Ajustamos el título */
+    .cart-container h1 {
+        font-size: 28px;
+    }
+
+    /* Reducimos el tamaño de la tabla */
+    .cart-table {
+        font-size: 13px;
+    }
+
+    /* Ajustamos los botones de cantidad */
+    .cart-table .btn {
+        padding: 4px 8px;
+    }
+
+    /* Permitimos que los botones finales bajen de línea */
+    .cart-container .justify-content-end {
+        flex-wrap: wrap;
+    }
+
+    /* Reducimos el tamaño del total */
+    .cart-container h3 {
+        font-size: 22px;
+    }
+}
