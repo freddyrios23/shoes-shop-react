@@ -5,7 +5,7 @@ import Text from '../components/atoms/Text';
 
 function AdminMode({ productos, setProductos }) {
 
-    
+
 
     //agregar
     const [nombre, setNombre] = useState('');
@@ -102,8 +102,8 @@ function AdminMode({ productos, setProductos }) {
                 {productos.map(producto => (
 
 
-                    <Col xs={3} key={producto.id}>
-                        <Card className="my-3 p-3" key={producto.id} style={{ width: '300px', height: '350px' }}>
+                    <Col xs={12} sm={6} lg={4} key={producto.id}>
+                        <Card className="my-3 p-3" key={producto.id} style={{ width: '100%', minHeight: '350px' }}>
                             <Card.Img
                                 src={producto.imagen}
                                 style={{ width: '150px', height: '120px', objectFit: 'contain' }}
