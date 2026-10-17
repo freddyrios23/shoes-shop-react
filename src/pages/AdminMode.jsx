@@ -86,9 +86,17 @@ function AdminMode() {
                 onChange={(e) => setPrecio(e.target.value)}
             />
 
+            <input
+                className="form-control mb-3"
+                type="text"
+                placeholder="URL de la imagen"
+                value={imagen}
+                onChange={(e) => setImagen(e.target.value)}
+            />
 
 
-            <Button 
+
+            <Button
                 className="mt-1"
                 variant="success" onClick={agregarProducto}>
                 Agregar producto
@@ -98,7 +106,7 @@ function AdminMode() {
                 {productos.map(producto => (
 
 
-                    <Col xs={6} key={producto.id}>
+                    <Col xs={3} key={producto.id}>
                         <Card className="my-3 p-3" key={producto.id} style={{ width: '300px', height: '350px' }}>
                             <Card.Img
                                 src={producto.imagen}
@@ -133,20 +141,25 @@ function AdminMode() {
                                     </div>
                                 )}
 
-                                <Button
-                                    className="me-2"
-                                    variant="warning"
-                                    onClick={() => editarProducto(producto)}
-                                >
-                                    Editar
-                                </Button>
+                                <div style={{ marginTop: 'auto', display: 'flex', gap: '10px' }}>
+                                    <Button
+                                        variant="warning"
+                                        size="md"
+                                        style={{ width: '160px' }}
+                                        onClick={() => editarProducto(producto)}
+                                    >
+                                        Editar
+                                    </Button>
 
-                                <Button
-                                    variant="danger"
-                                    onClick={() => eliminarProducto(producto.id)}
-                                >
-                                    Eliminar
-                                </Button>
+                                    <Button
+                                        variant="danger"
+                                        size="md"
+                                        style={{ width: '170px' }}
+                                        onClick={() => eliminarProducto(producto.id)}
+                                    >
+                                        Eliminar
+                                    </Button>
+                                </div>
                             </Card.Body>
                         </Card>
                     </Col>
