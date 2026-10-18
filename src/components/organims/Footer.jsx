@@ -19,7 +19,7 @@ function Footer() {
                     Sobre Nosotros
                 </Link>
                 {" * "}
-                <a href="https://www.instagram.com/elarayax" className="footer-link">
+                <a href="https://www.instagram.com/shoes.xhop" className="footer-link">
                     Redes Sociales
                 </a>
             </Text>
