@@ -24,7 +24,7 @@ function NavBar() {
         <Navbar bg="dark" variant="dark" expand="lg" className="py-2">
             <Container>
                 {/* Logo / Marca */}
-                <Navbar.Brand as={Link} to={window.location.pathname === "/" ? "/Adminmode" : "/"}>
+                <Navbar.Brand as={Link} to="/">
                     SHOES SHOP
                 </Navbar.Brand>
 
