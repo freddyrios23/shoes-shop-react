@@ -1,12 +1,23 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function NavBar() {
     const [menuAbierto, setMenuAbierto] = useState(false);
     const dropdownRef = useRef(null);
+    const navigate = useNavigate();
 
-    // Vanilla JS para cerrar el menú al hacer clic fuera
+    // Verificamos si hay un usuario activo guardado
+    const usuarioActivo = localStorage.getItem('usuarioActivo');
+
+    // Cerrar sesión
+    const cerrarSesion = () => {
+        localStorage.removeItem('usuarioActivo');
+        setMenuAbierto(false);
+        alert('Has cerrado sesión correctamente.');
+        navigate('/login');
+    };
+
     useEffect(() => {
         function manejarClickFuera(e) {
             if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
@@ -23,14 +34,11 @@ function NavBar() {
     return (
         <Navbar bg="dark" variant="dark" expand="lg" className="py-2">
             <Container>
-                {/* Logo / Marca */}
                 <Navbar.Brand as={Link} to={window.location.pathname === "/" ? "/Adminmode" : "/"}>
                     SHOES SHOP
                 </Navbar.Brand>
 
-                {/* Íconos a la derecha: Monito (Usuario) y Carrito */}
                 <div className="d-flex align-items-center order-lg-last gap-3 ms-auto ms-lg-3">
-                    {/* Monito / Usuario con menú desplegable */}
                     <div className="nav-user-container" ref={dropdownRef}>
                         <button
                             type="button"
@@ -39,7 +47,6 @@ function NavBar() {
                             aria-label="Cuenta de usuario"
                             aria-expanded={menuAbierto}
                         >
-                            {/* Ícono de usuario (Monito) */}
                             <svg
                                 width="22"
                                 height="22"
@@ -55,62 +62,55 @@ function NavBar() {
                             </svg>
                         </button>
 
-                        {/* Menú desplegable con Iniciar sesión y Registrarse */}
                         {menuAbierto && (
                             <div className="nav-user-dropdown">
-                                <Link
-                                    to="/login"
-                                    className="nav-dropdown-item"
-                                    onClick={() => setMenuAbierto(false)}
-                                >
-                                    <svg
-                                        width="16"
-                                        height="16"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
+                                {usuarioActivo ? (
+                                    /* Opción para Salir si inició sesión */
+                                    <button
+                                        type="button"
+                                        className="nav-dropdown-item border-0 bg-transparent w-100 text-start"
+                                        onClick={cerrarSesion}
                                     >
-                                        <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
-                                        <polyline points="10 17 15 12 10 7" />
-                                        <line x1="15" y1="12" x2="3" y2="12" />
-                                    </svg>
-                                    <span>Iniciar sesión</span>
-                                </Link>
-                                <Link
-                                    to="/register"
-                                    className="nav-dropdown-item"
-                                    onClick={() => setMenuAbierto(false)}
-                                >
-                                    <svg
-                                        width="16"
-                                        height="16"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        strokeWidth="2"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    >
-                                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                                        <circle cx="8.5" cy="7" r="4" />
-                                        <line x1="20" y1="8" x2="20" y2="14" />
-                                        <line x1="23" y1="11" x2="17" y2="11" />
-                                    </svg>
-                                    <span>Registrarse</span>
-                                </Link>
+                                        <svg
+                                            width="16"
+                                            height="16"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        >
+                                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+                                            <polyline points="16 17 21 12 16 7" />
+                                            <line x1="21" y1="12" x2="9" y2="12" />
+                                        </svg>
+                                        <span>Salir</span>
+                                    </button>
+                                ) : (
+                                    /* Opciones si NO ha iniciado sesión */
+                                    <>
+                                        <Link
+                                            to="/login"
+                                            className="nav-dropdown-item"
+                                            onClick={() => setMenuAbierto(false)}
+                                        >
+                                            <span>Iniciar sesión</span>
+                                        </Link>
+                                        <Link
+                                            to="/register"
+                                            className="nav-dropdown-item"
+                                            onClick={() => setMenuAbierto(false)}
+                                        >
+                                            <span>Registrarse</span>
+                                        </Link>
+                                    </>
+                                )}
                             </div>
                         )}
                     </div>
 
-                    {/* Carrito de compras */}
-                    <Link
-                        to="/cart"
-                        className="nav-icon-btn"
-                        aria-label="Carrito de compras"
-                    >
+                    <Link to="/cart" className="nav-icon-btn" aria-label="Carrito de compras">
                         <svg
                             width="22"
                             height="22"
@@ -128,10 +128,8 @@ function NavBar() {
                     </Link>
                 </div>
 
-                {/* Botón hamburguesa en pantallas pequeñas */}
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
-                {/* Enlaces principales */}
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         <Nav.Link as={Link} to="/">Inicio</Nav.Link>

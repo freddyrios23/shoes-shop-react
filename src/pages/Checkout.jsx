@@ -6,14 +6,12 @@ import CheckoutContent from '../components/organims/CheckoutContent';
 function Checkout() {
   const navigate = useNavigate();
 
-  // Leemos el carrito guardado
   const datosGuardados = localStorage.getItem('carrito');
   let cartItems = [];
   if (datosGuardados) {
     cartItems = JSON.parse(datosGuardados);
   }
 
-  // Calculamos el total con ciclo for
   let total = 0;
   for (let i = 0; i < cartItems.length; i++) {
     let cant = cartItems[i].cantidad;
@@ -23,14 +21,15 @@ function Checkout() {
     total = total + (cartItems[i].precio * cant);
   }
 
-  // Estados simples para el formulario
   const [nombre, setNombre] = useState('');
   const [apellido, setApellido] = useState('');
   const [correo, setCorreo] = useState('');
   const [calle, setCalle] = useState('');
   const [comuna, setComuna] = useState('');
 
-  // Función para procesar el pago
+  // Expresión regular que admite únicamente letras y espacios (sin números ni símbolos)
+  const soloLetrasRegex = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/;
+
   const realizarPago = (e) => {
     e.preventDefault();
 
@@ -39,16 +38,25 @@ function Checkout() {
       return;
     }
 
-    // Validación sencilla de correo sin cosas raras
+    // Validación para el nombre
+    if (!soloLetrasRegex.test(nombre)) {
+      alert('El nombre solo debe contener letras. No se permiten números, puntos ni símbolos.');
+      return;
+    }
+
+    // Validación para el apellido si no está vacío
+    if (apellido && !soloLetrasRegex.test(apellido)) {
+      alert('El apellido solo debe contener letras. No se permiten números, puntos ni símbolos.');
+      return;
+    }
+
+    // Validación simple del correo
     if (correo.includes('..') || !correo.includes('@') || !correo.includes('.')) {
       alert('Por favor ingresa un correo válido (no se permiten puntos seguidos .. ni formatos incorrectos).');
       return;
     }
 
-    // Vaciamos el carrito tras pagar
     localStorage.removeItem('carrito');
-
-    // Redirigimos a la página de éxito
     navigate('/pago-exitoso');
   };
 
