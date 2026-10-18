@@ -50,7 +50,7 @@ describe('Footer', () => {
         const enlace = screen.getByRole('link', { name: 'Redes Sociales' });
 
         expect(enlace.getAttribute('href')).toBe(
-            'https://www.instagram.com/elarayax'
+            'https://www.instagram.com/shoes.xhop'
         );
     });
 
