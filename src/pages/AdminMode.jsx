@@ -115,9 +115,10 @@ function AdminMode({ productos, setProductos }) {
 
                                 {idEditar === producto.id && (
                                     <div>
+
                                         <input
                                             type="text"
-                                            style={{ width: '250px', height: '40px' }}
+                                            style={{ width: '100%', height: '35px', marginBottom: '8px', boxSizing: 'border-box' }}
                                             value={nombreEditar}
                                             onChange={(e) => setNombreEditar(e.target.value)}
                                             placeholder="Nuevo nombre"
@@ -125,19 +126,13 @@ function AdminMode({ productos, setProductos }) {
 
                                         <input
                                             type="number"
-                                            style={{ width: '80px', height: '40px' }}
+                                            style={{ width: '100%', height: '35px', marginBottom: '8px', boxSizing: 'border-box' }}
                                             value={precioEditar}
                                             onChange={(e) => setPrecioEditar(e.target.value)}
                                             placeholder="Nuevo precio"
                                         />
 
-                                        <Button
-                                            variant="success"
-                                            style={{ marginTop: '-5px', marginLeft: '23px' }}
-                                            onClick={guardarEdicion}
-                                        >
-                                            Guardar
-                                        </Button>
+
 
                                     </div>
                                 )}
@@ -160,6 +155,17 @@ function AdminMode({ productos, setProductos }) {
                                     >
                                         Eliminar
                                     </Button>
+
+                                    <Button
+                                        variant="success"
+                                        style={{ width: '90px' }}
+                                        onClick={guardarEdicion}
+                                    >
+                                        Guardar
+                                    </Button>
+
+
+
                                 </div>
                             </Card.Body>
                         </Card>
