@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Container, Table, Alert } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import Button from '../components/atoms/Button';
@@ -7,7 +7,15 @@ import Image from '../components/atoms/Image';
 function Cart() {
   const navigate = useNavigate();
 
-  // se lee lo que esta guardado en el navegador
+  // Bloquea el acceso al carrito si no se inició sesión
+  useEffect(() => {
+    const usuarioActivo = localStorage.getItem('usuarioActivo');
+    if (!usuarioActivo) {
+      alert('Debes iniciar sesión para ver y acceder al carrito de compras.');
+      navigate('/login');
+    }
+  }, [navigate]);
+
   const datosGuardados = localStorage.getItem('carrito');
 
   let listaInicial = [];
@@ -15,10 +23,8 @@ function Cart() {
     listaInicial = JSON.parse(datosGuardados);
   }
 
-  // se guarda la lista de estados
   const [cartItems, setCartItems] = useState(listaInicial);
 
-  // Función para sumar 1 a la cantidad
   const sumarCantidad = (posicion) => {
     const copia = [...cartItems];
     if (!copia[posicion].cantidad) {
@@ -30,7 +36,6 @@ function Cart() {
     localStorage.setItem('carrito', JSON.stringify(copia));
   };
 
-  // Función para restar 1 a la cantidad
   const restarCantidad = (posicion) => {
     const copia = [...cartItems];
     let cantidadActual = copia[posicion].cantidad;
@@ -45,20 +50,17 @@ function Cart() {
     }
   };
 
-  // funcion para borrar un producto
   const eliminarProducto = (posicionABorrar) => {
     const nuevaLista = cartItems.filter((item, index) => index !== posicionABorrar);
     setCartItems(nuevaLista);
     localStorage.setItem('carrito', JSON.stringify(nuevaLista));
   };
 
-  // funcion para borrar el carrito
   const vaciarCarrito = () => {
     setCartItems([]);
     localStorage.removeItem('carrito');
   };
 
-  // calcula el total de un ciclo
   let total = 0;
   for (let i = 0; i < cartItems.length; i++) {
     let cant = cartItems[i].cantidad;
@@ -68,12 +70,10 @@ function Cart() {
     total = total + (cartItems[i].precio * cant);
   }
 
-  // función para ir a la vista de pagar (checkout)
   const irAPagar = () => {
     navigate('/checkout');
   };
 
-  // si el carrito esta vacío
   if (cartItems.length === 0) {
     return (
       <Container className="my-5 text-center">
@@ -86,7 +86,7 @@ function Cart() {
   return (
     <Container className="my-4 cart-container">
       <Alert variant="info">
-        <strong>¡carrito de compras pagina shoes shop!</strong>
+        <strong>¡Carrito de compras pagina shoes shop!</strong>
       </Alert>
 
       <h1 className="mb-4">Carrito de Compras</h1>
@@ -155,7 +155,6 @@ function Cart() {
           <Button variant="secondary" onClick={vaciarCarrito}>
             Vaciar
           </Button>
-          {/* Botón de Comprar ahora que redirige a /checkout */}
           <Button variant="success" onClick={irAPagar}>
             Comprar ahora
           </Button>
