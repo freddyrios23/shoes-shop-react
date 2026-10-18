@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Input } from '../components/atoms/Input';
 import Button from '../components/atoms/Button';
+import Text from '../components/atoms/Text';
+
 
 function AdminLogin() {
     const [usuario, setUsuario] = useState('');
@@ -25,17 +27,17 @@ function AdminLogin() {
             width: '300px',
             margin: '170px auto'
         }}>
-            <h2>Modo administrador</h2>
+            <Text variant="h2">Modo administrador</Text>
 
             <form onSubmit={ingresar}>
-                <p>Usuario</p>
+                <Text>Usuario</Text>
                 <Input
                     value={usuario}
                     onChange={(e) => setUsuario(e.target.value)}
                     placeholder="Ingrese usuario"
                 />
 
-                <p>Contraseña</p>
+                <Text>Contraseña</Text>
                 <Input
                     type="password"
                     value={clave}

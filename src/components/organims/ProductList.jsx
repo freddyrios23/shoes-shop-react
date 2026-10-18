@@ -1,14 +1,11 @@
+// Importamos el arreglo que contiene los productos originales de la tienda
+import productosOriginales from "../../data/products";
 
- // Importamos el arreglo que contiene los productos de la tienda
-import productos from "../../data/products";
-
-// Importamos la tarjeta que muestra la información de cada zapatilla
+ // Importamos la tarjeta que muestra la información de cada zapatilla
 import ProductCard from "../molecules/ProductCard";
 
-// El componente recibe dos propiedades:
-// busqueda: texto que queremos buscar 
-// limite: cantidad máxima de productos que queremos mostrar 
-function ProductList({ busqueda = "", limite }) {
+// Recibimos los productos, el texto de búsqueda y el límite
+function ProductList({ productos = productosOriginales, busqueda = "", limite }) {
 
     // Filtramos los productos según su nombre
     const productosFiltrados = productos.filter((producto) =>
@@ -30,8 +27,6 @@ function ProductList({ busqueda = "", limite }) {
                         className="col-12 col-sm-6 col-lg-4"
                         key={producto.id}
                     >
-                        {/* Reutilizamos ProductCard para mostrar cada zapatilla */}
-                        {/* Adaptamos los nombres de los campos a los que espera ProductCard */}
                         <ProductCard
                             product={{
                                 id: producto.id,
@@ -56,5 +51,4 @@ function ProductList({ busqueda = "", limite }) {
     );
 }
 
-// Exportamos el componente para poder reutilizarlo en otras páginas
 export default ProductList;
