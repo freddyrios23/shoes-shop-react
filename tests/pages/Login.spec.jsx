@@ -26,6 +26,7 @@ describe('Login', () => {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<RutaActual />} />
+          <Route path="/cart" element={<RutaActual />} />
           <Route path="/register" element={<RutaActual />} />
           <Route path="/admin-login" element={<RutaActual />} />
         </Routes>
@@ -129,7 +130,7 @@ describe('Login', () => {
     expect(window.alert).toHaveBeenCalledWith('Contraseña incorrecta');
   });
 
-  it('debe iniciar sesión y navegar al inicio con credenciales correctas', () => {
+  it('debe iniciar sesión y navegar al carrito con credenciales correctas', () => {
     localStorage.setItem(
       'usuarios',
       JSON.stringify([{ usuario: 'freddy', clave: '1234' }])
@@ -153,6 +154,6 @@ describe('Login', () => {
       '¡Inicio de sesión exitoso!'
     );
 
-    expect(screen.getByText('Ruta actual: /')).toBeTruthy();
+    expect(screen.getByText('Ruta actual: /cart')).toBeTruthy();
   });
 });

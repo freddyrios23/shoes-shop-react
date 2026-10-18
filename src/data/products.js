@@ -34,13 +34,13 @@ const productos = [
         id: 6,
         nombre: "Zapatillas Reebok Classic",
         precio: 50000,
-        imagen: "/img/reebok-clasic.jpg"
+        imagen: "/img/reebok-clasic.webp"
     },
     {
         id: 7,
         nombre: "Botín Hombre Timberland",
         precio: 80000,
-        imagen: "/img/bototo-hombre-timberlan.webp"
+        imagen: "/img/bototo-hombre-timberlan.jpg"
     },
     {
         id: 8,
@@ -52,13 +52,13 @@ const productos = [
         id: 9,
         nombre: "Zapatillas adidas Campus 00s Crystal White",
         precio: 75000,
-        imagen: "/img/adidas-campus-00s-crystal-white-core-black.webp"
+        imagen: "/img/adidas-campus-00s-crystal-white-core-black.jpg"
     },
     {
         id: 10,
         nombre: "Zapatillas New Balance 550",
         precio: 85000,
-        imagen: "/img/new balance 550.webp"
+        imagen: "/img/new balance 550.jpg"
     },
     {
         id: 11,
@@ -82,7 +82,7 @@ const productos = [
         id: 14,
         nombre: "Air Jordan 3 White Cement",
         precio: 219990,
-        imagen: "/img/Air Jordan 3 White Cement.jpg"
+        imagen: "/img/Air Jordan 3 White Cement.webp"
     },
     {
         id: 15,
@@ -100,13 +100,13 @@ const productos = [
         id: 17,
         nombre: "Nike Air Force White",
         precio: 79990,
-        imagen: "/img/nike air force white.webp"
+        imagen: "/img/nike air force white.jpg"
     },
     {
         id: 18,
         nombre: "New Balance 9060",
         precio: 129990,
-        imagen: "/img/New Balance 9060.jpg"
+        imagen: "/img/New Balance 9060.webp"
     },
     {
         id: 19,
