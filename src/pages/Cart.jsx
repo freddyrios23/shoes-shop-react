@@ -84,14 +84,14 @@ function Cart() {
   }
 
   return (
-    <Container className="my-4">
+    <Container className="my-4 cart-container">
       <Alert variant="info">
         <strong>¡Carrito de compras pagina shoes shop!</strong>
       </Alert>
 
       <h1 className="mb-4">Carrito de Compras</h1>
 
-      <Table striped bordered hover align="middle">
+      <Table striped bordered hover responsive="md" className="cart-table">
         <thead>
           <tr>
             <th>Imagen</th>
@@ -112,11 +112,16 @@ function Cart() {
 
             return (
               <tr key={index}>
-                <td style={{ width: '70px' }}>
+                <td className="cart-image-cell">
                   <Image
                     src={item.imagen}
                     alt={item.nombre}
-                    style={{ width: '50px', height: '50px', objectFit: 'cover' }}
+                    className="cart-product-image"
+                    style={{
+                      width: '50px',
+                      height: '50px',
+                      objectFit: 'contain'
+                    }}
                   />
                 </td>
                 <td>{item.nombre}</td>

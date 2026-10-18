@@ -314,3 +314,232 @@ footer p {
   flex-direction: column;
   padding: 16px;
 }
+
+/* contenido del home*/
+.home-title {
+    font-size: 42px;
+    font-weight: bold;
+    color: #171717;
+    margin-bottom: 20px;
+}
+
+/* Estilos para la descripción de la tienda */
+.home-description {
+    background-color: #f2f2f2; /* Color de fondo gris claro */
+    padding: 20px; /* Espacio interno alrededor del texto */
+    border-radius: 8px; /* Redondea las esquinas */
+}
+
+/* Estilos del título de productos destacados */
+.featured-title {
+    font-size: 32px;
+    font-weight: bold;
+    color: #171717;
+    margin-top: 10px;
+    margin-bottom: 25px;
+}
+
+/* Estilos para las imágenes de los productos */
+.product-image {
+    width: 100%;         /* Ocupa el ancho disponible */
+    height: 220px;       /* Todas tendrán la misma altura */
+    object-fit: contain; /* Muestra la zapatilla completa */
+    padding: 10px;       /* Deja espacio alrededor */
+}
+
+/* Footer de la tienda */
+.footer {
+    background-color: #212529;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Enlaces del footer */
+.footer-link {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-link:hover {
+    color: #cccccc;
+    text-decoration: underline;
+}
+
+
+/* Página de contacto */
+.contact-container {
+    width: 100%;
+    max-width: 750px;
+    box-sizing: border-box;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Separamos los campos */
+.contact-field {
+    margin-bottom: 16px;
+}
+
+/* Ajustamos los campos del formulario */
+.contact-field .form-control {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Botón de contacto */
+.contact-button {
+    width: 100%;
+    margin-top: 15px;
+}
+
+
+
+/* Página Sobre Nosotros */
+.about-container {
+    width: 90%;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 25px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Título principal */
+.about-container h1 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* Presentación */
+.about-intro {
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #f2f2f2;
+    border-radius: 8px;
+}
+
+/* Títulos de las secciones */
+.about-container h2 {
+    margin-bottom: 10px;
+}
+
+/* Historia, misión y compromiso */
+.about-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-left: 4px solid #212529;
+}
+
+/* Texto */
+.about-container p {
+    line-height: 1.6;
+}
+
+/* Ajustes para celulares */
+@media (max-width: 600px) {
+
+    /* Reducimos el tamaño del título del inicio */
+    .home-title {
+        font-size: 30px;
+    }
+
+    /* Ajustamos el título de productos destacados */
+    .featured-title {
+        font-size: 24px;
+    }
+
+    /* Reducimos la altura de las imágenes de productos */
+    .product-image,
+    .card-img-top {
+        height: 180px;
+    }
+
+    /* Ajustamos los espacios de la página de contacto */
+    .contact-container {
+        width: 95%;
+        margin: 20px auto;
+        padding: 18px;
+    }
+
+    /* Ajustamos la página Sobre Nosotros */
+    .about-container {
+        width: 95%;
+        margin: 20px auto;
+        padding: 18px;
+    }
+
+    /* Reducimos el espacio de los formularios */
+    .auth-wrapper {
+        padding: 25px 15px;
+    }
+
+    .auth-box {
+        padding: 24px 18px;
+    }
+
+    /* Ajustamos el tamaño de los títulos de las páginas */
+    .about-container h1,
+    .auth-title {
+        font-size: 26px;
+    }
+
+    /* Evitamos que el footer tenga demasiado espacio */
+    .footer {
+        padding: 15px 10px;
+    }
+}
+
+
+/* Tamaño de las imágenes del carrito */
+.cart-image-cell {
+    width: 70px;
+}
+
+.cart-product-image {
+    display: block;
+    width: 50px !important;
+    height: 50px !important;
+    object-fit: contain;
+}
+
+/* Ajustes del carrito en celulares */
+@media (max-width: 600px) {
+
+    /* Ajustamos el espacio de la página */
+    .cart-container {
+        width: 100%;
+        max-width: 100%;
+        padding: 12px;
+        margin: 0 auto;
+    }
+
+    /* Ajustamos el título */
+    .cart-container h1 {
+        font-size: 28px;
+    }
+
+    /* Reducimos el tamaño de la tabla */
+    .cart-table {
+        font-size: 13px;
+    }
+
+    /* Ajustamos los botones de cantidad */
+    .cart-table .btn {
+        padding: 4px 8px;
+    }
+
+    /* Permitimos que los botones finales bajen de línea */
+    .cart-container .justify-content-end {
+        flex-wrap: wrap;
+    }
+
+    /* Reducimos el tamaño del total */
+    .cart-container h3 {
+        font-size: 22px;
+    }
+}

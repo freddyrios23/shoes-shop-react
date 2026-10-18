@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { Container, Card, Row, Col } from 'react-bootstrap';
-import productosIniciales from '../data/products';
 import Button from '../components/atoms/Button';
+import Text from '../components/atoms/Text';
 
-function AdminMode() {
+function AdminMode({ productos, setProductos }) {
 
-    const [productos, setProductos] = useState(productosIniciales);
+
 
     //agregar
     const [nombre, setNombre] = useState('');
@@ -16,10 +16,6 @@ function AdminMode() {
     const [idEditar, setIdEditar] = useState(null);
     const [nombreEditar, setNombreEditar] = useState('');
     const [precioEditar, setPrecioEditar] = useState('');
-
-
-
-
 
     function agregarProducto() {
         if (nombre === '' || precio === '') {
@@ -68,7 +64,7 @@ function AdminMode() {
 
     return (
         <Container className="my-5">
-            <h1>Modo admin Supremo</h1>
+            <Text variant="h1">Modo administrador</Text>
 
             <input
                 className="form-control mb-2"
@@ -86,9 +82,17 @@ function AdminMode() {
                 onChange={(e) => setPrecio(e.target.value)}
             />
 
+            <input
+                className="form-control mb-3"
+                type="text"
+                placeholder="URL de la imagen"
+                value={imagen}
+                onChange={(e) => setImagen(e.target.value)}
+            />
 
 
-            <Button 
+
+            <Button
                 className="mt-1"
                 variant="success" onClick={agregarProducto}>
                 Agregar producto
@@ -98,16 +102,16 @@ function AdminMode() {
                 {productos.map(producto => (
 
 
-                    <Col xs={6} key={producto.id}>
-                        <Card className="my-3 p-3" key={producto.id} style={{ width: '300px', height: '350px' }}>
+                    <Col xs={12} sm={6} lg={4} key={producto.id}>
+                        <Card className="my-3 p-3" key={producto.id} style={{ width: '100%', minHeight: '350px' }}>
                             <Card.Img
                                 src={producto.imagen}
                                 style={{ width: '150px', height: '120px', objectFit: 'contain' }}
                             />
 
                             <Card.Body>
-                                <Card.Title>{producto.nombre}</Card.Title>
-                                <Card.Text>Precio: ${producto.precio}</Card.Text>
+                                <Text variant="h5">{producto.nombre}</Text>
+                                <Text variant="p">Precio: ${producto.precio}</Text>
 
                                 {idEditar === producto.id && (
                                     <div>
@@ -127,26 +131,36 @@ function AdminMode() {
                                             placeholder="Nuevo precio"
                                         />
 
-                                        <Button variant="success" onClick={guardarEdicion}>
+                                        <Button
+                                            variant="success"
+                                            style={{ marginTop: '-5px', marginLeft: '23px' }}
+                                            onClick={guardarEdicion}
+                                        >
                                             Guardar
                                         </Button>
+
                                     </div>
                                 )}
 
-                                <Button
-                                    className="me-2"
-                                    variant="warning"
-                                    onClick={() => editarProducto(producto)}
-                                >
-                                    Editar
-                                </Button>
+                                <div className="botones-admin" style={{ display: 'flex', gap: '20px' }}>
+                                    <Button
+                                        variant="warning"
+                                        size="md"
+                                        style={{ width: '80px' }}
+                                        onClick={() => editarProducto(producto)}
+                                    >
+                                        Editar
+                                    </Button>
 
-                                <Button
-                                    variant="danger"
-                                    onClick={() => eliminarProducto(producto.id)}
-                                >
-                                    Eliminar
-                                </Button>
+                                    <Button
+                                        variant="danger"
+                                        size="md"
+                                        style={{ width: '90px' }}
+                                        onClick={() => eliminarProducto(producto.id)}
+                                    >
+                                        Eliminar
+                                    </Button>
+                                </div>
                             </Card.Body>
                         </Card>
                     </Col>

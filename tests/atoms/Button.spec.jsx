@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 // Importamos el componente Button que vamos a probar
-import Button from '../../../components/atoms/Button';
+import Button from '../../src/components/atoms/Button';
 
 describe('Prueba del Átomo Button', () => {
 

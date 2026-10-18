@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Button from '../components/atoms/Button';
 
 function Login() {
   const [usuario, setUsuario] = useState('');
   const [clave, setClave] = useState('');
   const [error, setError] = useState('');
+  const [mostrarAdmin, setMostrarAdmin] = useState(false);
 
   const navigate = useNavigate();
 
@@ -24,8 +26,11 @@ function Login() {
 
     // Buscamos los usuarios guardados en localStorage
     let usuariosGuardados = [];
+
     try {
-      usuariosGuardados = JSON.parse(localStorage.getItem('usuarios')) || [];
+      usuariosGuardados = JSON.parse(
+        localStorage.getItem('usuarios')
+      ) || [];
     } catch {
       usuariosGuardados = [];
     }
@@ -51,7 +56,10 @@ function Login() {
     }
 
     // Guardamos la sesión activa del usuario
-    localStorage.setItem('usuarioActivo', JSON.stringify(usuarioEncontrado));
+    localStorage.setItem(
+      'usuarioActivo',
+      JSON.stringify(usuarioEncontrado)
+    );
 
     alert('¡Inicio de sesión exitoso!');
     navigate('/cart');
@@ -63,6 +71,7 @@ function Login() {
 
       <div className="auth-box">
         <form onSubmit={iniciarSesion}>
+          {/* Mensaje de error visual */}
           {error && (
             <div className="auth-error-msg">
               <span>{error}</span>
@@ -70,7 +79,9 @@ function Login() {
           )}
 
           <div className="form-group">
-            <label className="form-label" htmlFor="login-usuario">Nombre de usuario</label>
+            <label className="form-label" htmlFor="login-usuario">
+              Nombre de usuario
+            </label>
             <input
               id="login-usuario"
               type="text"
@@ -86,7 +97,9 @@ function Login() {
           </div>
 
           <div className="form-group">
-            <label className="form-label" htmlFor="login-clave">Contraseña</label>
+            <label className="form-label" htmlFor="login-clave">
+              Contraseña
+            </label>
             <input
               id="login-clave"
               type="password"
@@ -109,6 +122,21 @@ function Login() {
         <div className="auth-link-text">
           <span>¿No tienes cuenta?</span>
           <Link to="/register">Regístrate</Link>
+        </div>
+
+        <div className="text-center mt-3">
+          <span
+            onClick={() => setMostrarAdmin(!mostrarAdmin)}
+            style={{ cursor: 'pointer' }}
+          >
+            ⚙️
+          </span>
+
+          {mostrarAdmin && (
+            <Button onClick={() => navigate('/admin-login')}>
+              Modo administrador
+            </Button>
+          )}
         </div>
       </div>
     </div>

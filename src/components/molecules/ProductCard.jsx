@@ -50,12 +50,11 @@ function ProductCard({ product }) {
     return (
         <Card className="m-2 h-100">
             {/* Imagen del zapato */}
-            <Image
-                src={product.image}
-                alt={product.name}
-                className="card-img-top"
-            />
-
+                <Image
+                    src={product.image}
+                    alt={product.name}
+                    className="product-image"
+                />
             <Card.Body>
                 {/* Nombre, descripción y precio */}
                 <CardBody
