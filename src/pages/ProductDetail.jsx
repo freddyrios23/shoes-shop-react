@@ -1,10 +1,9 @@
 
 import { useParams } from "react-router-dom";
-import productos from "../data/products";
 import ProductDetailContent from "../components/organims/ProductDetailContent";
 import Text from "../components/atoms/Text";
 
-function ProductDetail() {
+function ProductDetail({productos}) {
     // Obtenemos el ID desde la URL
     const { id } = useParams();
 
