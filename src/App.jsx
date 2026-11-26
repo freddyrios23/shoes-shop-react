@@ -45,7 +45,7 @@ function App() {
                 const respuesta = await obtenerZapatillas();
 
                 // Spring HATEOAS entrega los elementos dentro de _embedded
-                const lista = respuesta._embedded?.zapatillas || [];
+                const lista = respuesta?._embedded?.zapatillaDTOList || [];
 
                 // Adaptamos los datos del backend al formato del frontend
                 const productosAPI = lista.map((elemento) => {
@@ -61,7 +61,7 @@ function App() {
                         id: producto.id,
                         nombre: producto.nombre,
                         precio: producto.precio,
-                        imagen: productoLocal?.imagen || "/img/Adidas.jpg"
+                        imagen: producto.imagen || productoLocal?.imagen || "/img/Adidas.jpg"
                     };
                 });
 

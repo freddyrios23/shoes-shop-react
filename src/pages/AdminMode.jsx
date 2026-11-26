@@ -40,7 +40,7 @@ function AdminMode({ productos, setProductos }) {
             try {
                 const respuesta = await obtenerMarcas();
 
-                const lista = respuesta._embedded?.marcas || [];
+                const lista = respuesta?._embedded?.marcaDTOList || [];
 
                 setMarcas(lista);
 
@@ -114,25 +114,77 @@ function AdminMode({ productos, setProductos }) {
         setPrecioEditar(producto.precio);
     }
 
-    // Guardar cambios del producto (temporalmente local)
-    function guardarEdicion() {
+    // Guardar cambios del producto en Spring Boot
+    async function guardarEdicion() {
 
-        setProductos(productos.map(p =>
-            p.id === idEditar
-                ? {
-                    ...p,
-                    nombre: nombreEditar,
-                    precio: Number(precioEditar)
-                }
-                : p
-        ));
+        if (nombreEditar.trim() === '' || precioEditar === '') {
+            alert('Debe completar el nombre y el precio');
+            return;
+        }
 
-        setIdEditar(null);
-    }
+        try {
+            const datosActualizados = {
+                nombre: nombreEditar.trim(),
+                precio: Number(precioEditar)
+            };
 
-    // Eliminar producto (temporalmente local)
-    function eliminarProducto(id) {
-        setProductos(productos.filter(p => p.id !== id));
+            const respuesta = await actualizarZapatilla(
+                idEditar,
+                datosActualizados
+            );
+
+            // Actualizamos el producto en React
+            setProductos(productos.map(p =>
+                p.id === idEditar
+                    ? {
+                        ...p,
+                        nombre: respuesta.nombre,
+                        precio: respuesta.precio
+                    }
+                    : p
+            ));
+
+            setIdEditar(null);
+
+            alert('¡Zapatilla actualizada correctamente!');
+
+        } catch (error) {
+            console.error("Error al actualizar zapatilla:", error);
+
+            alert(
+                error.response?.data?.message ||
+                "No se pudo actualizar la zapatilla."
+            );
+        }
+    }   
+    
+    // Eliminar zapatilla desde Spring Boot
+    async function eliminarProducto(id) {
+
+        const confirmar = window.confirm(
+            "¿Estás seguro de que deseas eliminar esta zapatilla?"
+        );
+
+        if (!confirmar) return;
+
+        try {
+
+            await eliminarZapatilla(id);
+
+            // Actualizamos el listado de React
+            setProductos(productos.filter(p => p.id !== id));
+
+            alert("¡Zapatilla eliminada correctamente!");
+
+        } catch (error) {
+
+            console.error("Error al eliminar zapatilla:", error);
+
+            alert(
+                error.response?.data?.message ||
+                "No se pudo eliminar la zapatilla."
+            );
+        }
     }
 
     return (
